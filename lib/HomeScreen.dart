@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/ChangeLanguage.dart';
+import 'package:getx/CounterExample.dart';
+import 'package:getx/FavoriteExample.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -69,6 +71,24 @@ class HomeScreen extends StatelessWidget {
               subtitle:const Text('Click to change language'),
               onTap:(){
                 Get.to(const ChangeLanguage());
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title:const Text('GetX State Management'),
+              subtitle:const Text('Counter example'),
+              onTap:(){
+                Get.to(CounterExample());
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title:const Text('GetX State Management'),
+              subtitle:const Text('Favorite example'),
+              onTap:(){
+                Get.to(const FavoriteItems());
               },
             ),
           ),
