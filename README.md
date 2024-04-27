@@ -1,6 +1,11 @@
 # getx state managemnet
 
-A new Flutter project.
+ GetX:
+ Snackbar
+ ALertDialog
+ BottomSheet
+ ThemeData
+ Change Languages
 
 ## Getting Started
 
