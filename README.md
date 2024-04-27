@@ -1,4 +1,4 @@
-# getx
+# getx state managemnet
 
 A new Flutter project.
 
