@@ -7,26 +7,59 @@ class FavoriteItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('build');
     final Favorite favorite=Get.put(Favorite());
-    return ListView.builder(
-        itemCount:favorite.cars.length,
-        itemBuilder: (context,index){
-      return Obx(() => Card(
-        child: ListTile(
-          onTap:(){
-            if(favorite.tempList.contains(index)){
-              favorite.removeFromFav(index);
-            }
-            else
-              {
-                favorite.addToFav(index);
-              }
-          },
-          title:Text(favorite.cars[index]),
-          trailing:  Icon(Icons.favorite,color:favorite.tempList.contains(index)?Colors.red:Colors.black26,),
-        ),
-      ));
-    });
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+                itemCount:favorite.cars.length,
+                itemBuilder: (context,index){
+                  final car=favorite.cars[index];
+              return Obx(() => Card(
+                child: ListTile(
+                  onTap:(){
+                    if(favorite.tempList.contains(car)){
+                      favorite.removeFromFav(car);
+                    }
+                    else
+                      {
+                        favorite.addToFav(car);
+                      }
+                  },
+                  title:Text(favorite.cars[index]),
+                  trailing:  Icon(Icons.favorite,color:favorite.tempList.contains(car)?Colors.red:Colors.black26,),
+                ),
+              ));
+            }),
+          ),
+          Obx(() =>Expanded(
+            child: ListView.builder(
+              itemCount: favorite.tempList.length,
+              itemBuilder: (context, index) {
+                final car = favorite.tempList[index].toString(); // Use tempList instead of cars
+                return  Card(
+                  child: ListTile(
+                    onTap: () {
+                      if (favorite.tempList.contains(car)) {
+                        favorite.removeFromFav(car);
+                      }
+                    },
+                    title: Text(car), // Use car instead of favorite.cars[index]
+                    trailing: Icon(
+                      Icons.favorite,
+                      color: favorite.tempList.contains(car) ? Colors.red : Colors.black26,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),)
+
+        ],
+      ),
+    );
   }
 }
 class Favorite extends GetxController{
@@ -36,6 +69,7 @@ class Favorite extends GetxController{
 
   addToFav(index){
     tempList.add(index);
+    print(tempList.value);
   }
   removeFromFav(index){
     tempList.remove(index);

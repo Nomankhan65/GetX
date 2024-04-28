@@ -3,17 +3,20 @@ import 'package:get/get.dart';
 import 'package:getx/ChangeLanguage.dart';
 import 'package:getx/CounterExample.dart';
 import 'package:getx/FavoriteExample.dart';
+import 'package:getx/PostAPI.dart';
+import 'package:getx/SwitchButton.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    print('object');
     return Scaffold(
       appBar:AppBar(
         title:const Text('Get-X'),
         backgroundColor:Colors.amberAccent,
       ),
-      body:  Column(
+      body:Column(
         children: [
           Card(
             child: ListTile(
@@ -43,6 +46,7 @@ class HomeScreen extends StatelessWidget {
               subtitle:const Text('Click to change theme'),
               onTap:(){
                 Get.bottomSheet(
+                    backgroundColor:Colors.white,
                     Column(children: [
                     ListTile(
                       leading:const Icon(Icons.light_mode),
@@ -79,7 +83,7 @@ class HomeScreen extends StatelessWidget {
               title:const Text('GetX State Management'),
               subtitle:const Text('Counter example'),
               onTap:(){
-                Get.to(CounterExample());
+                Get.to(const CounterExample());
               },
             ),
           ),
@@ -89,6 +93,24 @@ class HomeScreen extends StatelessWidget {
               subtitle:const Text('Favorite example'),
               onTap:(){
                 Get.to(const FavoriteItems());
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title:const Text('GetX State Management'),
+              subtitle:const Text('Switch button example'),
+              onTap:(){
+                Get.to(const SwitchButton());
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title:const Text('GetX State Management'),
+              subtitle:const Text('Post API example'),
+              onTap:(){
+                Get.to(PostAPI());
               },
             ),
           ),
